@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA0A43FE1756DAE200D2F909 /* CentauriTransmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A43FD1756DAE200D2F909 /* CentauriTransmitterTests.m */; };
+		AA1A09841745BE6A00AD8C20 /* CentauriTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A09831745BE6A00AD8C20 /* CentauriTests.m */; };
+		AA1A098D1745C1E800AD8C20 /* CentauriInMemoryState.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A098C1745C1E800AD8C20 /* CentauriInMemoryState.m */; };
+		AA1A0993174B104C00AD8C20 /* CentauriSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1A0992174B104C00AD8C20 /* CentauriSessionTests.m */; };
+		AA373B5A173B390500E1DDCC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373B59173B390500E1DDCC /* Foundation.framework */; };
+		AA373B69173B390600E1DDCC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373B68173B390600E1DDCC /* SenTestingKit.framework */; };
+		AA373B6B173B390600E1DDCC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373B6A173B390600E1DDCC /* UIKit.framework */; };
+		AA373B6C173B390600E1DDCC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373B59173B390500E1DDCC /* Foundation.framework */; };
+		AA373B75173B390600E1DDCC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA373B73173B390600E1DDCC /* InfoPlist.strings */; };
+		AA373BAF173B3E3B00E1DDCC /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373BA1173B3C7A00E1DDCC /* libKiwi.a */; };
+		AA373BB0173B3E3E00E1DDCC /* libNocilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373BAC173B3C8600E1DDCC /* libNocilla.a */; };
+		AA373BB2173B3E5000E1DDCC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA373BB1173B3E5000E1DDCC /* CFNetwork.framework */; };
+		AA7706DE175BDB9500981116 /* CentauriTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7706DD175BDB9400981116 /* CentauriTimestamp.m */; };
+		AA7706DF175BDB9500981116 /* CentauriTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7706DD175BDB9400981116 /* CentauriTimestamp.m */; };
+		AA7706E1175BDBDB00981116 /* CentauriTimestampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7706E0175BDBDB00981116 /* CentauriTimestampTests.m */; };
+		AA7AA39417445F0100F5F651 /* Centauri.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA39317445F0100F5F651 /* Centauri.m */; };
+		AA7AA39517445F0100F5F651 /* Centauri.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA39317445F0100F5F651 /* Centauri.m */; };
+		AA7AA3A21744682800F5F651 /* CentauriSession.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A11744682800F5F651 /* CentauriSession.m */; };
+		AA7AA3A31744682800F5F651 /* CentauriSession.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A11744682800F5F651 /* CentauriSession.m */; };
+		AA7AA3A61744692500F5F651 /* CentauriBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A51744692500F5F651 /* CentauriBuffer.m */; };
+		AA7AA3A71744692500F5F651 /* CentauriBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A51744692500F5F651 /* CentauriBuffer.m */; };
+		AA7AA3AA1744720F00F5F651 /* CentauriTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A91744720F00F5F651 /* CentauriTransmitter.m */; };
+		AA7AA3AB1744720F00F5F651 /* CentauriTransmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3A91744720F00F5F651 /* CentauriTransmitter.m */; };
+		AA7AA3AE174474BA00F5F651 /* CentauriState.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3AD174474BA00F5F651 /* CentauriState.m */; };
+		AA7AA3AF174474BA00F5F651 /* CentauriState.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3AD174474BA00F5F651 /* CentauriState.m */; };
+		AA7AA3B717447CD600F5F651 /* CentauriWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3B617447CD600F5F651 /* CentauriWorker.m */; };
+		AA7AA3B817447CD600F5F651 /* CentauriWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3B617447CD600F5F651 /* CentauriWorker.m */; };
+		AAD5D62D174EF7E3009D7D2A /* CentauriBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD5D62C174EF7E3009D7D2A /* CentauriBufferTests.m */; };
+		AAE7A759176168180075292C /* CentauriSanitizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7A758176168180075292C /* CentauriSanitizer.m */; };
+		AAE7A75A176168180075292C /* CentauriSanitizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7A758176168180075292C /* CentauriSanitizer.m */; };
+		AAE7A762176168870075292C /* CentauriSanitizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7A761176168870075292C /* CentauriSanitizerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA373B6D173B390600E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373B4E173B390500E1DDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA373B55173B390500E1DDCC;
+			remoteInfo = Centauri;
+		};
+		AA373BA0173B3C7A00E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5015B9F11583A77002E9A98;
+			remoteInfo = Kiwi;
+		};
+		AA373BA2173B3C7A00E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 832C83C7157263B300F160D5;
+			remoteInfo = "Kiwi-OSX";
+		};
+		AA373BA4173B3C7A00E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F5015C9E11584017002E9A98;
+			remoteInfo = KiwiTests;
+		};
+		AA373BAB173B3C8600E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373BA6173B3C8500E1DDCC /* Nocilla.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A085B83815E30749007D33C1;
+			remoteInfo = Nocilla;
+		};
+		AA373BAD173B3C8600E1DDCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA373BA6173B3C8500E1DDCC /* Nocilla.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A085B84915E30749007D33C1;
+			remoteInfo = NocillaTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA373B54173B390500E1DDCC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA0A43FD1756DAE200D2F909 /* CentauriTransmitterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriTransmitterTests.m; sourceTree = "<group>"; };
+		AA1A09831745BE6A00AD8C20 /* CentauriTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriTests.m; sourceTree = "<group>"; };
+		AA1A098B1745C1E800AD8C20 /* CentauriInMemoryState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriInMemoryState.h; sourceTree = "<group>"; };
+		AA1A098C1745C1E800AD8C20 /* CentauriInMemoryState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriInMemoryState.m; sourceTree = "<group>"; };
+		AA1A0992174B104C00AD8C20 /* CentauriSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriSessionTests.m; sourceTree = "<group>"; };
+		AA373B56173B390500E1DDCC /* libCentauri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCentauri.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA373B59173B390500E1DDCC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA373B5D173B390500E1DDCC /* Centauri-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Centauri-Prefix.pch"; sourceTree = "<group>"; };
+		AA373B67173B390600E1DDCC /* CentauriTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentauriTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA373B68173B390600E1DDCC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		AA373B6A173B390600E1DDCC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		AA373B72173B390600E1DDCC /* CentauriTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CentauriTests-Info.plist"; sourceTree = "<group>"; };
+		AA373B74173B390600E1DDCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kiwi.xcodeproj; path = Kiwi/Kiwi.xcodeproj; sourceTree = SOURCE_ROOT; };
+		AA373BA6173B3C8500E1DDCC /* Nocilla.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nocilla.xcodeproj; path = Nocilla/Nocilla.xcodeproj; sourceTree = SOURCE_ROOT; };
+		AA373BB1173B3E5000E1DDCC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		AA7706D5175BD46500981116 /* CentauriDevLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriDevLog.h; sourceTree = "<group>"; };
+		AA7706DC175BDB9400981116 /* CentauriTimestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriTimestamp.h; sourceTree = "<group>"; };
+		AA7706DD175BDB9400981116 /* CentauriTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriTimestamp.m; sourceTree = "<group>"; };
+		AA7706E0175BDBDB00981116 /* CentauriTimestampTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriTimestampTests.m; sourceTree = "<group>"; };
+		AA7AA39217445F0100F5F651 /* Centauri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Centauri.h; sourceTree = "<group>"; };
+		AA7AA39317445F0100F5F651 /* Centauri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Centauri.m; sourceTree = "<group>"; };
+		AA7AA3A01744682800F5F651 /* CentauriSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriSession.h; sourceTree = "<group>"; };
+		AA7AA3A11744682800F5F651 /* CentauriSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriSession.m; sourceTree = "<group>"; };
+		AA7AA3A41744692500F5F651 /* CentauriBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriBuffer.h; sourceTree = "<group>"; };
+		AA7AA3A51744692500F5F651 /* CentauriBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriBuffer.m; sourceTree = "<group>"; };
+		AA7AA3A81744720E00F5F651 /* CentauriTransmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriTransmitter.h; sourceTree = "<group>"; };
+		AA7AA3A91744720F00F5F651 /* CentauriTransmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriTransmitter.m; sourceTree = "<group>"; };
+		AA7AA3AC174474BA00F5F651 /* CentauriState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriState.h; sourceTree = "<group>"; };
+		AA7AA3AD174474BA00F5F651 /* CentauriState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriState.m; sourceTree = "<group>"; };
+		AA7AA3B517447CD600F5F651 /* CentauriWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriWorker.h; sourceTree = "<group>"; };
+		AA7AA3B617447CD600F5F651 /* CentauriWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriWorker.m; sourceTree = "<group>"; };
+		AAD5D62C174EF7E3009D7D2A /* CentauriBufferTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriBufferTests.m; sourceTree = "<group>"; };
+		AADECD201782123E00C811A0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		AAE7A757176168180075292C /* CentauriSanitizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriSanitizer.h; sourceTree = "<group>"; };
+		AAE7A758176168180075292C /* CentauriSanitizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriSanitizer.m; sourceTree = "<group>"; };
+		AAE7A761176168870075292C /* CentauriSanitizerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriSanitizerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA373B53173B390500E1DDCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA373B5A173B390500E1DDCC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA373B63173B390600E1DDCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA373BB2173B3E5000E1DDCC /* CFNetwork.framework in Frameworks */,
+				AA373BB0173B3E3E00E1DDCC /* libNocilla.a in Frameworks */,
+				AA373BAF173B3E3B00E1DDCC /* libKiwi.a in Frameworks */,
+				AA373B69173B390600E1DDCC /* SenTestingKit.framework in Frameworks */,
+				AA373B6B173B390600E1DDCC /* UIKit.framework in Frameworks */,
+				AA373B6C173B390600E1DDCC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA373B4D173B390500E1DDCC = {
+			isa = PBXGroup;
+			children = (
+				AA373BB1173B3E5000E1DDCC /* CFNetwork.framework */,
+				AA373B5B173B390500E1DDCC /* Centauri */,
+				AA373B70173B390600E1DDCC /* CentauriTests */,
+				AA373B58173B390500E1DDCC /* Frameworks */,
+				AA373B57173B390500E1DDCC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA373B57173B390500E1DDCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA373B56173B390500E1DDCC /* libCentauri.a */,
+				AA373B67173B390600E1DDCC /* CentauriTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA373B58173B390500E1DDCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA373B59173B390500E1DDCC /* Foundation.framework */,
+				AA373B68173B390600E1DDCC /* SenTestingKit.framework */,
+				AA373B6A173B390600E1DDCC /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA373B5B173B390500E1DDCC /* Centauri */ = {
+			isa = PBXGroup;
+			children = (
+				AADECD201782123E00C811A0 /* README.md */,
+				AA373B5C173B390500E1DDCC /* Supporting Files */,
+				AA7AA39217445F0100F5F651 /* Centauri.h */,
+				AA7AA39317445F0100F5F651 /* Centauri.m */,
+				AA7706D5175BD46500981116 /* CentauriDevLog.h */,
+				AA7706DC175BDB9400981116 /* CentauriTimestamp.h */,
+				AA7706DD175BDB9400981116 /* CentauriTimestamp.m */,
+				AAE7A757176168180075292C /* CentauriSanitizer.h */,
+				AAE7A758176168180075292C /* CentauriSanitizer.m */,
+				AA7AA3AC174474BA00F5F651 /* CentauriState.h */,
+				AA7AA3AD174474BA00F5F651 /* CentauriState.m */,
+				AA7AA3B517447CD600F5F651 /* CentauriWorker.h */,
+				AA7AA3B617447CD600F5F651 /* CentauriWorker.m */,
+				AA7AA3A01744682800F5F651 /* CentauriSession.h */,
+				AA7AA3A11744682800F5F651 /* CentauriSession.m */,
+				AA7AA3A41744692500F5F651 /* CentauriBuffer.h */,
+				AA7AA3A51744692500F5F651 /* CentauriBuffer.m */,
+				AA7AA3A81744720E00F5F651 /* CentauriTransmitter.h */,
+				AA7AA3A91744720F00F5F651 /* CentauriTransmitter.m */,
+			);
+			path = Centauri;
+			sourceTree = "<group>";
+		};
+		AA373B5C173B390500E1DDCC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA373B5D173B390500E1DDCC /* Centauri-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA373B70173B390600E1DDCC /* CentauriTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */,
+				AA373BA6173B3C8500E1DDCC /* Nocilla.xcodeproj */,
+				AA1A098B1745C1E800AD8C20 /* CentauriInMemoryState.h */,
+				AA1A098C1745C1E800AD8C20 /* CentauriInMemoryState.m */,
+				AA1A09831745BE6A00AD8C20 /* CentauriTests.m */,
+				AA7706E0175BDBDB00981116 /* CentauriTimestampTests.m */,
+				AAE7A761176168870075292C /* CentauriSanitizerTests.m */,
+				AA1A0992174B104C00AD8C20 /* CentauriSessionTests.m */,
+				AAD5D62C174EF7E3009D7D2A /* CentauriBufferTests.m */,
+				AA0A43FD1756DAE200D2F909 /* CentauriTransmitterTests.m */,
+				AA373B71173B390600E1DDCC /* Supporting Files */,
+			);
+			path = CentauriTests;
+			sourceTree = "<group>";
+		};
+		AA373B71173B390600E1DDCC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA373B72173B390600E1DDCC /* CentauriTests-Info.plist */,
+				AA373B73173B390600E1DDCC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA373B9A173B3C7800E1DDCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA373BA1173B3C7A00E1DDCC /* libKiwi.a */,
+				AA373BA3173B3C7A00E1DDCC /* libKiwi-OSX.a */,
+				AA373BA5173B3C7A00E1DDCC /* KiwiTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA373BA7173B3C8500E1DDCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA373BAC173B3C8600E1DDCC /* libNocilla.a */,
+				AA373BAE173B3C8600E1DDCC /* NocillaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA373B55173B390500E1DDCC /* Centauri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA373B7B173B390600E1DDCC /* Build configuration list for PBXNativeTarget "Centauri" */;
+			buildPhases = (
+				AA373B52173B390500E1DDCC /* Sources */,
+				AA373B53173B390500E1DDCC /* Frameworks */,
+				AA373B54173B390500E1DDCC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Centauri;
+			productName = Centauri;
+			productReference = AA373B56173B390500E1DDCC /* libCentauri.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AA373B66173B390600E1DDCC /* CentauriTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA373B7E173B390600E1DDCC /* Build configuration list for PBXNativeTarget "CentauriTests" */;
+			buildPhases = (
+				AA373B62173B390600E1DDCC /* Sources */,
+				AA373B63173B390600E1DDCC /* Frameworks */,
+				AA373B64173B390600E1DDCC /* Resources */,
+				AA373B65173B390600E1DDCC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA373B6E173B390600E1DDCC /* PBXTargetDependency */,
+			);
+			name = CentauriTests;
+			productName = CentauriTests;
+			productReference = AA373B67173B390600E1DDCC /* CentauriTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA373B4E173B390500E1DDCC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Light Year Software, LLC";
+			};
+			buildConfigurationList = AA373B51173B390500E1DDCC /* Build configuration list for PBXProject "Centauri" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA373B4D173B390500E1DDCC;
+			productRefGroup = AA373B57173B390500E1DDCC /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA373B9A173B3C7800E1DDCC /* Products */;
+					ProjectRef = AA373B99173B3C7800E1DDCC /* Kiwi.xcodeproj */;
+				},
+				{
+					ProductGroup = AA373BA7173B3C8500E1DDCC /* Products */;
+					ProjectRef = AA373BA6173B3C8500E1DDCC /* Nocilla.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AA373B55173B390500E1DDCC /* Centauri */,
+				AA373B66173B390600E1DDCC /* CentauriTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AA373BA1173B3C7A00E1DDCC /* libKiwi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKiwi.a;
+			remoteRef = AA373BA0173B3C7A00E1DDCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA373BA3173B3C7A00E1DDCC /* libKiwi-OSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libKiwi-OSX.a";
+			remoteRef = AA373BA2173B3C7A00E1DDCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA373BA5173B3C7A00E1DDCC /* KiwiTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KiwiTests.octest;
+			remoteRef = AA373BA4173B3C7A00E1DDCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA373BAC173B3C8600E1DDCC /* libNocilla.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNocilla.a;
+			remoteRef = AA373BAB173B3C8600E1DDCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA373BAE173B3C8600E1DDCC /* NocillaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NocillaTests.octest;
+			remoteRef = AA373BAD173B3C8600E1DDCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA373B64173B390600E1DDCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA373B75173B390600E1DDCC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA373B65173B390600E1DDCC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA373B52173B390500E1DDCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7AA39417445F0100F5F651 /* Centauri.m in Sources */,
+				AA7AA3A21744682800F5F651 /* CentauriSession.m in Sources */,
+				AA7AA3A61744692500F5F651 /* CentauriBuffer.m in Sources */,
+				AA7AA3AA1744720F00F5F651 /* CentauriTransmitter.m in Sources */,
+				AA7AA3AE174474BA00F5F651 /* CentauriState.m in Sources */,
+				AA7AA3B717447CD600F5F651 /* CentauriWorker.m in Sources */,
+				AA7706DE175BDB9500981116 /* CentauriTimestamp.m in Sources */,
+				AAE7A759176168180075292C /* CentauriSanitizer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA373B62173B390600E1DDCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7AA39517445F0100F5F651 /* Centauri.m in Sources */,
+				AA7AA3A31744682800F5F651 /* CentauriSession.m in Sources */,
+				AA7AA3A71744692500F5F651 /* CentauriBuffer.m in Sources */,
+				AA7AA3AB1744720F00F5F651 /* CentauriTransmitter.m in Sources */,
+				AA7AA3AF174474BA00F5F651 /* CentauriState.m in Sources */,
+				AA7AA3B817447CD600F5F651 /* CentauriWorker.m in Sources */,
+				AA1A09841745BE6A00AD8C20 /* CentauriTests.m in Sources */,
+				AA1A098D1745C1E800AD8C20 /* CentauriInMemoryState.m in Sources */,
+				AA1A0993174B104C00AD8C20 /* CentauriSessionTests.m in Sources */,
+				AAD5D62D174EF7E3009D7D2A /* CentauriBufferTests.m in Sources */,
+				AA0A43FE1756DAE200D2F909 /* CentauriTransmitterTests.m in Sources */,
+				AA7706DF175BDB9500981116 /* CentauriTimestamp.m in Sources */,
+				AA7706E1175BDBDB00981116 /* CentauriTimestampTests.m in Sources */,
+				AAE7A75A176168180075292C /* CentauriSanitizer.m in Sources */,
+				AAE7A762176168870075292C /* CentauriSanitizerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA373B6E173B390600E1DDCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA373B55173B390500E1DDCC /* Centauri */;
+			targetProxy = AA373B6D173B390600E1DDCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA373B73173B390600E1DDCC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA373B74173B390600E1DDCC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA373B79173B390600E1DDCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
+			};
+			name = Debug;
+		};
+		AA373B7A173B390600E1DDCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
+			};
+			name = Release;
+		};
+		AA373B7C173B390600E1DDCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Centauri.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Centauri/Centauri-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AA373B7D173B390600E1DDCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Centauri.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Centauri/Centauri-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		AA373B7F173B390600E1DDCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Centauri/Centauri-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"SPECS=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Kiwi/Classes",
+					"$(SRCROOT)/Nocilla/Nocilla/**",
+				);
+				INFOPLIST_FILE = "CentauriTests/CentauriTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		AA373B80173B390600E1DDCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Centauri/Centauri-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Kiwi/Classes",
+					"$(SRCROOT)/Nocilla/Nocilla/**",
+				);
+				INFOPLIST_FILE = "CentauriTests/CentauriTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+					"-Wno-unused-parameter",
+				);
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA373B51173B390500E1DDCC /* Build configuration list for PBXProject "Centauri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA373B79173B390600E1DDCC /* Debug */,
+				AA373B7A173B390600E1DDCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA373B7B173B390600E1DDCC /* Build configuration list for PBXNativeTarget "Centauri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA373B7C173B390600E1DDCC /* Debug */,
+				AA373B7D173B390600E1DDCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA373B7E173B390600E1DDCC /* Build configuration list for PBXNativeTarget "CentauriTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA373B7F173B390600E1DDCC /* Debug */,
+				AA373B80173B390600E1DDCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA373B4E173B390500E1DDCC /* Project object */;
+}

@@ -1,0 +1,6 @@
+[submodule "Kiwi"]
+	path = Kiwi
+	url = https://github.com/allending/Kiwi.git
+[submodule "Nocilla"]
+	path = Nocilla
+	url = https://github.com/luisobo/Nocilla.git
