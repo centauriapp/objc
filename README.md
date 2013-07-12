@@ -3,7 +3,7 @@ A flexible log capture and session analytics service for iOS.
 
 Centauri consists of two components: a client side library (this project) and a web application. The library collects and transmits session and log data to the web application, where you can later review usage data and examine logs to help debug problems.
 
-You need an account to use the web application. Visit [https://centauriapp.com/](https://centauriapp.com/) to get started.
+This client library requires iOS 5.0 or later. You also need an account to use the web application. Visit [https://centauriapp.com/](https://centauriapp.com/) to get started.
 
 ## Features
 * Log user sessions to a central service for later review while debugging.
