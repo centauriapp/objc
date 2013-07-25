@@ -537,6 +537,7 @@ describe(@"sendToServerWithCompletion:", ^{
             [info[@"_OS"] shouldNotBeNil];
             [info[@"_Hardware Model"] shouldNotBeNil];
             [info[@"_Locale"] shouldNotBeNil];
+            [info[@"_Time Zone"] shouldNotBeNil];
         });
 
         it(@"does not send any buffers", ^{

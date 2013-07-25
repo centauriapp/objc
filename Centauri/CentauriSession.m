@@ -320,6 +320,7 @@ extern NSString * const CentauriLibraryVersion;
     free(machine);
 
     info[@"_Locale"] = [[NSLocale currentLocale] localeIdentifier];
+    info[@"_Time Zone"] = [[NSTimeZone localTimeZone] name];
 
     session[@"session_info"] = info;
 
