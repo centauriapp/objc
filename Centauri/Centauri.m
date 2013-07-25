@@ -22,8 +22,6 @@
 #import "CentauriTransmitter.h"
 #import "CentauriDevLog.h"
 
-NSString * const CentauriLibraryVersion = @"1.0.0-alpha.1";
-
 void CENLog(NSString *format, ...)
 {
     va_list arguments;

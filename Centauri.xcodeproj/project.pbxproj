@@ -34,6 +34,8 @@
 		AA7AA3AF174474BA00F5F651 /* CentauriState.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3AD174474BA00F5F651 /* CentauriState.m */; };
 		AA7AA3B717447CD600F5F651 /* CentauriWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3B617447CD600F5F651 /* CentauriWorker.m */; };
 		AA7AA3B817447CD600F5F651 /* CentauriWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA3B617447CD600F5F651 /* CentauriWorker.m */; };
+		AAD112E617A15C0800D88062 /* CentauriVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD112E517A15C0800D88062 /* CentauriVersion.m */; };
+		AAD112E717A15C1400D88062 /* CentauriVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD112E517A15C0800D88062 /* CentauriVersion.m */; };
 		AAD5D62D174EF7E3009D7D2A /* CentauriBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD5D62C174EF7E3009D7D2A /* CentauriBufferTests.m */; };
 		AAE7A759176168180075292C /* CentauriSanitizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7A758176168180075292C /* CentauriSanitizer.m */; };
 		AAE7A75A176168180075292C /* CentauriSanitizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7A758176168180075292C /* CentauriSanitizer.m */; };
@@ -130,6 +132,7 @@
 		AA7AA3AD174474BA00F5F651 /* CentauriState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriState.m; sourceTree = "<group>"; };
 		AA7AA3B517447CD600F5F651 /* CentauriWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriWorker.h; sourceTree = "<group>"; };
 		AA7AA3B617447CD600F5F651 /* CentauriWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriWorker.m; sourceTree = "<group>"; };
+		AAD112E517A15C0800D88062 /* CentauriVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriVersion.m; sourceTree = "<group>"; };
 		AAD5D62C174EF7E3009D7D2A /* CentauriBufferTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentauriBufferTests.m; sourceTree = "<group>"; };
 		AADECD201782123E00C811A0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		AAE7A757176168180075292C /* CentauriSanitizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentauriSanitizer.h; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 				AA373B5C173B390500E1DDCC /* Supporting Files */,
 				AA7AA39217445F0100F5F651 /* Centauri.h */,
 				AA7AA39317445F0100F5F651 /* Centauri.m */,
+				AAD112E517A15C0800D88062 /* CentauriVersion.m */,
 				AA7706D5175BD46500981116 /* CentauriDevLog.h */,
 				AA7706DC175BDB9400981116 /* CentauriTimestamp.h */,
 				AA7706DD175BDB9400981116 /* CentauriTimestamp.m */,
@@ -279,6 +283,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA373B7B173B390600E1DDCC /* Build configuration list for PBXNativeTarget "Centauri" */;
 			buildPhases = (
+				AAD112EF17A1611400D88062 /* Generate CentauriVersion.m */,
 				AA373B52173B390500E1DDCC /* Sources */,
 				AA373B53173B390500E1DDCC /* Frameworks */,
 				AA373B54173B390500E1DDCC /* CopyFiles */,
@@ -411,6 +416,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		AAD112EF17A1611400D88062 /* Generate CentauriVersion.m */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CentauriVersion.m";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"NSString * const CentauriLibraryVersion = @\\\"`git describe --tags --dirty`\\\";\" >\"$PROJECT_DIR/Centauri/CentauriVersion.m\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -426,6 +445,7 @@
 				AA7AA3B717447CD600F5F651 /* CentauriWorker.m in Sources */,
 				AA7706DE175BDB9500981116 /* CentauriTimestamp.m in Sources */,
 				AAE7A759176168180075292C /* CentauriSanitizer.m in Sources */,
+				AAD112E617A15C0800D88062 /* CentauriVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +468,7 @@
 				AA7706E1175BDBDB00981116 /* CentauriTimestampTests.m in Sources */,
 				AAE7A75A176168180075292C /* CentauriSanitizer.m in Sources */,
 				AAE7A762176168870075292C /* CentauriSanitizerTests.m in Sources */,
+				AAD112E717A15C1400D88062 /* CentauriVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
