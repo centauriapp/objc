@@ -786,7 +786,15 @@ describe(@"sendToServerWithCompletion:", ^{
         });
 
         context(@"when the PATCH fails", ^{
-            // FIXME
+            it(@"endPosted remains NO", ^{
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusTemporaryFailure);
+                    return nil;
+                }];
+                [session sendToServerWithCompletion:nil];
+                [[theValue(session.endPosted) should] beNo];
+            });
         });
 
         context(@"when the PATCH fails permanently", ^{
