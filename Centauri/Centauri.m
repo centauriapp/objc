@@ -104,6 +104,7 @@ static NSString * Base64EncodeString(NSString *string);
     _state = state;
     _sessions = [[_state loadSessions] mutableCopy];
 
+    /* Any previous sessions without an end date should be ended now. On iOS, the app was terminated through the list of recently used apps or by the system due to memory pressure in the foreground app. */
     for (CentauriSession *session in _sessions)
     {
         if (session.endDate == nil)
@@ -178,7 +179,7 @@ static NSString * Base64EncodeString(NSString *string);
 {
     [self.worker doBlock:^{
         CentauriDevLog(@"Flushing %d sessions", [_sessions count]);
-        for (CentauriSession *session in _sessions)
+        for (CentauriSession *session in [_sessions copy])
         {
             [session sendToServerWithCompletion:^(BOOL readyForCleanup) {
                 CentauriDevLog(@"Session %@ readyForCleanup=%@", session.uuid, readyForCleanup ? @"YES" : @"NO");

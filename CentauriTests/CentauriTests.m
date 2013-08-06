@@ -243,7 +243,7 @@ describe(@"Centauri public API", ^{
             __block CentauriSession *oldSession;
 
             beforeEach(^{
-                oldSession = [CentauriSession nullMock]; //[[CentauriSession alloc] initWithAppToken:@"token" info:nil userID:nil];
+                oldSession = [CentauriSession nullMock];
                 session = [CentauriSession nullMock];
                 state.savedSessions = @[ oldSession, session ];
                 instance.state = state;
@@ -257,64 +257,74 @@ describe(@"Centauri public API", ^{
             });
 
             context(@"when the session signals it is ready for clean-up", ^{
-                __block KWCaptureSpy *oldSessionSpy;
-                __block KWCaptureSpy *sessionSpy;
-
-                beforeEach(^{
-                    oldSessionSpy = [oldSession captureArgument:@selector(sendToServerWithCompletion:) atIndex:0];
-                    sessionSpy = [session captureArgument:@selector(sendToServerWithCompletion:) atIndex:0];
-                });
-
                 context(@"for an old session", ^{
                     it(@"cleans up the session", ^{
+                        [oldSession stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(YES);
+                            return nil;
+                        }];
                         [[oldSession should] receive:@selector(cleanup)];
                         [instance flush];
-                        void (^block)(BOOL) = oldSessionSpy.argument;
-                        block(YES);
                     });
 
                     it(@"removes the session from the session list", ^{
+                        [oldSession stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(YES);
+                            return nil;
+                        }];
                         [instance flush];
-                        void (^block)(BOOL) = oldSessionSpy.argument;
-                        block(YES);
                         [[theValue([state.savedSessions containsObject:oldSession]) should] beNo];
                     });
                 });
 
                 context(@"for the current session", ^{
                     it(@"does not clean up the session", ^{
+                        [session stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(YES);
+                            return nil;
+                        }];
                         [[session shouldNot] receive:@selector(cleanup)];
                         [instance flush];
-                        void (^block)(BOOL) = sessionSpy.argument;
-                        block(YES);
                     });
 
                     it(@"does not remove the session from the session list", ^{
+                        [session stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(YES);
+                            return nil;
+                        }];
                         [instance flush];
-                        void (^block)(BOOL) = sessionSpy.argument;
-                        block(YES);
                         [[theValue([state.savedSessions containsObject:session]) should] beYes];
                     });
                 });
             });
 
             context(@"when the session signals it is not ready for clean-up", ^{
-                __block KWCaptureSpy *oldSessionSpy;
-                __block KWCaptureSpy *sessionSpy;
-
-                beforeEach(^{
-                    oldSessionSpy = [oldSession captureArgument:@selector(sendToServerWithCompletion:) atIndex:0];
-                    sessionSpy = [session captureArgument:@selector(sendToServerWithCompletion:) atIndex:0];
+                context(@"for an old session", ^{
+                    it(@"does not clean up the session", ^{
+                        [oldSession stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(NO);
+                            return nil;
+                        }];
+                        [[oldSession shouldNot] receive:@selector(cleanup)];
+                        [instance flush];
+                    });
                 });
 
-                it(@"does not clean up the session", ^{
-                    [[oldSession shouldNot] receive:@selector(cleanup)];
-                    [[session shouldNot] receive:@selector(cleanup)];
-                    [instance flush];
-                    void (^block)(BOOL) = oldSessionSpy.argument;
-                    block(NO);
-                    block = sessionSpy.argument;
-                    block(NO);
+                context(@"for the current session", ^{
+                    it(@"does not clean up the session", ^{
+                        [session stub:@selector(sendToServerWithCompletion:) withBlock:^id(NSArray *params) {
+                            void (^block)(BOOL) = params[0];
+                            block(NO);
+                            return nil;
+                        }];
+                        [[session shouldNot] receive:@selector(cleanup)];
+                        [instance flush];
+                    });
                 });
             });
         });

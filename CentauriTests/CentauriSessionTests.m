@@ -550,52 +550,64 @@ describe(@"sendToServerWithCompletion:", ^{
 
         context(@"when the POST succeeds", ^{
             it(@"sets beginPosted to YES", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusSuccess);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusSuccess);
                 [[theValue(session.beginPosted) should] beYes];
             });
 
             it(@"initiates another send to queue pending buffers", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
-                [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusSuccess);
+                    return nil;
+                }];
                 [[session should] receive:@selector(sendToServerWithCompletion:)];
-                block(TransmitStatusSuccess);
+                [session sendToServerWithCompletion:nil];
             });
         });
 
         context(@"when the POST fails", ^{
             it(@"does not initiate another send to queue pending buffers", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    [[session shouldNot] receive:@selector(sendToServerWithCompletion:)];
+                    block(TransmitStatusTemporaryFailure);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                [[session shouldNot] receive:@selector(sendToServerWithCompletion:)];
-                block(TransmitStatusTemporaryFailure);
             });
         });
 
         context(@"when the POST fails permanently", ^{
             it(@"invalidates the session", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    [[session should] receive:@selector(invalidate)];
+                    block(TransmitStatusPermanentFailure);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                [[session should] receive:@selector(invalidate)];
-                block(TransmitStatusPermanentFailure);
             });
 
             it(@"calls the completion block with readyForCleanup=YES", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
-                KWCaptureSpy *markerSpy = [transmitter captureArgument:@selector(queueMarker:) atIndex:0];
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusPermanentFailure);
+                    return nil;
+                }];
+                [transmitter stub:@selector(queueMarker:) withBlock:^id(NSArray *params) {
+                    void (^block)(void) = params[0];
+                    block();
+                    return nil;
+                }];
                 __block BOOL cleanup = NO;
                 [session sendToServerWithCompletion:^(BOOL readyForCleanup) {
                     cleanup = readyForCleanup;
                 }];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusPermanentFailure);
-                void (^markerBlock)(void) = markerSpy.argument;
-                markerBlock();
                 [[theValue(cleanup) should] beYes];
             });
         });
@@ -604,40 +616,40 @@ describe(@"sendToServerWithCompletion:", ^{
     context(@"when there is at least one unposted buffer", ^{
         __block NSString *path;
         __block CentauriBuffer *buffer;
+        __block CentauriBuffer *lastBuffer;
 
         beforeEach(^{
             session.beginPosted = YES;
             path = [NSString stringWithFormat:@"sessions/%@/log_lines.json", session.uuid];
             buffer = [CentauriBuffer nullMock];
             [buffer stub:@selector(bytesBuffered) andReturn:theValue(100)];
-            session.unpostedBuffers = [@[ buffer ] mutableCopy];
+            lastBuffer = [CentauriBuffer nullMock];
+            [lastBuffer stub:@selector(bytesBuffered) andReturn:theValue(0)];
+            session.unpostedBuffers = [@[ buffer, lastBuffer ] mutableCopy];
         });
 
         context(@"when the last unposted buffer is empty", ^{
-            __block CentauriBuffer *emptyBuffer;
-
-            beforeEach(^{
-                emptyBuffer = [CentauriBuffer nullMock];
-                [emptyBuffer stub:@selector(bytesBuffered) andReturn:theValue(0)];
-                session.unpostedBuffers = [@[ buffer, emptyBuffer ] mutableCopy];
-            });
-
             it(@"queues each unposted, non-empty buffer", ^{
                 [[buffer should] receive:@selector(inputStream)];
-                [[emptyBuffer shouldNot] receive:@selector(inputStream)];
+                [[lastBuffer shouldNot] receive:@selector(inputStream)];
                 [[transmitter should] receive:@selector(queueMethod:path:stream:completion:) withArguments:@"POST", path, any(), any()];
                 [session sendToServerWithCompletion:nil];
             });
 
             it(@"does not create a new buffer", ^{
                 [transmitter stub:@selector(queueMethod:path:stream:completion:)];
-                [[[session.unpostedBuffers lastObject] should] equal:emptyBuffer];
+                [[[session.unpostedBuffers lastObject] should] equal:lastBuffer];
             });
         });
 
         context(@"when the last unposted buffer is not empty", ^{
+            beforeEach(^{
+                [lastBuffer clearStubs];
+                [lastBuffer stub:@selector(bytesBuffered) andReturn:theValue(100)];
+            });
+
             it(@"freezes the buffer", ^{
-                [[buffer should] receive:@selector(freeze)];
+                [[lastBuffer should] receive:@selector(freeze)];
                 [transmitter stub:@selector(queueMethod:path:stream:completion:)];
                 [session sendToServerWithCompletion:nil];
             });
@@ -646,7 +658,7 @@ describe(@"sendToServerWithCompletion:", ^{
                 it(@"starts a new buffer", ^{
                     [transmitter stub:@selector(queueMethod:path:stream:completion:)];
                     [session sendToServerWithCompletion:nil];
-                    [[session.unpostedBuffers should] haveCountOf:2];
+                    [[session.unpostedBuffers should] haveCountOf:3];
                 });
             });
 
@@ -658,7 +670,7 @@ describe(@"sendToServerWithCompletion:", ^{
                 it(@"does not start a new buffer", ^{
                     [transmitter stub:@selector(queueMethod:path:stream:completion:)];
                     [session sendToServerWithCompletion:nil];
-                    [[session.unpostedBuffers should] haveCountOf:1];
+                    [[session.unpostedBuffers should] haveCountOf:2];
                 });
             });
         });
@@ -666,27 +678,33 @@ describe(@"sendToServerWithCompletion:", ^{
         context(@"when the POST succeeds", ^{
             it(@"cleans the buffer up", ^{
                 [[buffer should] receive:@selector(cleanup)];
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:stream:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:stream:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusSuccess);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusSuccess);
             });
 
             it(@"removes the buffer from unpostedBuffers", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:stream:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:stream:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusSuccess);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusSuccess);
                 [[session.unpostedBuffers shouldNot] contain:buffer];
             });
         });
 
         context(@"when the POST fails", ^{
             it(@"does not remove the buffer from unpostedBuffers", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:stream:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:stream:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusTemporaryFailure);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusTemporaryFailure);
                 [[session.unpostedBuffers should] contain:buffer];
             });
         });
@@ -694,17 +712,21 @@ describe(@"sendToServerWithCompletion:", ^{
         context(@"when the POST fails permanently", ^{
             it(@"cleans the buffer up", ^{
                 [[buffer should] receive:@selector(cleanup)];
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:stream:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:stream:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusPermanentFailure);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusPermanentFailure);
             });
 
             it(@"removes the buffer from unpostedBuffers", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:stream:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:stream:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusPermanentFailure);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusPermanentFailure);
                 [[session.unpostedBuffers shouldNot] contain:buffer];
             });
         });
@@ -753,25 +775,29 @@ describe(@"sendToServerWithCompletion:", ^{
 
         context(@"when the PATCH succeeds", ^{
             it(@"sets endPosted to YES", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusSuccess);
+                    return nil;
+                }];
                 [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
-                block(TransmitStatusSuccess);
                 [[theValue(session.endPosted) should] beYes];
             });
         });
 
         context(@"when the PATCH fails", ^{
-
+            // FIXME
         });
 
         context(@"when the PATCH fails permanently", ^{
             it(@"invalidates the session", ^{
-                KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMethod:path:parameters:completion:) atIndex:3];
-                [session sendToServerWithCompletion:nil];
-                void (^block)(TransmitStatus status) = spy.argument;
+                [transmitter stub:@selector(queueMethod:path:parameters:completion:) withBlock:^id(NSArray *params) {
+                    void (^block)(TransmitStatus status) = params[3];
+                    block(TransmitStatusPermanentFailure);
+                    return nil;
+                }];
                 [[session should] receive:@selector(invalidate)];
-                block(TransmitStatusPermanentFailure);
+                [session sendToServerWithCompletion:nil];
             });
         });
     });
@@ -784,12 +810,14 @@ describe(@"sendToServerWithCompletion:", ^{
         it(@"calls the completion block with readyForCleanup = NO", ^{
             __block BOOL shouldCleanup = YES;
             [transmitter stub:@selector(queueMethod:path:parameters:completion:)];
-            KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMarker:) atIndex:0];
+            [transmitter stub:@selector(queueMarker:) withBlock:^id(NSArray *params) {
+                void (^block)(void) = params[0];
+                block();
+                return nil;
+            }];
             [session sendToServerWithCompletion:^(BOOL readyForCleanup) {
                 shouldCleanup = readyForCleanup;
             }];
-            void (^block)(void) = spy.argument;
-            block();
             [[theValue(shouldCleanup) should] beNo];
         });
     });
@@ -803,12 +831,14 @@ describe(@"sendToServerWithCompletion:", ^{
         it(@"calls the completion block with readyForCleanup=YES", ^{
             __block BOOL shouldCleanup = NO;
             [transmitter stub:@selector(queueMethod:path:parameters:completion:)];
-            KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMarker:) atIndex:0];
+            [transmitter stub:@selector(queueMarker:) withBlock:^id(NSArray *params) {
+                void (^block)(void) = params[0];
+                block();
+                return nil;
+            }];
             [session sendToServerWithCompletion:^(BOOL readyForCleanup) {
                 shouldCleanup = readyForCleanup;
             }];
-            void (^block)(void) = spy.argument;
-            block();
             [[theValue(shouldCleanup) should] beYes];
         });
     });
@@ -825,12 +855,14 @@ describe(@"sendToServerWithCompletion:", ^{
 
         it(@"calls the completion block with readyForCleanup=YES", ^{
             __block BOOL shouldCleanup = NO;
-            KWCaptureSpy *spy = [transmitter captureArgument:@selector(queueMarker:) atIndex:0];
+            [transmitter stub:@selector(queueMarker:) withBlock:^id(NSArray *params) {
+                void (^block)(void) = params[0];
+                block();
+                return nil;
+            }];
             [session sendToServerWithCompletion:^(BOOL readyForCleanup) {
                 shouldCleanup = readyForCleanup;
             }];
-            void (^block)(void) = spy.argument;
-            block();
             [[theValue(shouldCleanup) should] beYes];
         });
     });

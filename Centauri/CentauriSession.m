@@ -228,7 +228,7 @@ extern NSString * const CentauriLibraryVersion;
         else
         {
             NSString *path = [NSString stringWithFormat:@"sessions/%@/log_lines.json", self.uuid];
-            for (CentauriBuffer *buffer in self.unpostedBuffers)
+            for (CentauriBuffer *buffer in [self.unpostedBuffers copy])
             {
                 if (buffer.bytesBuffered > 0)
                 {
