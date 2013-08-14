@@ -39,7 +39,7 @@ extern "C" {
     /*!
      @brief The version of the libary.
      */
-    extern NSString * const CentauriLibraryVersion;
+    extern NSString * const CentauriSDKVersion;
 
     /*!
      @brief Logs a simple message, with optional arguments.

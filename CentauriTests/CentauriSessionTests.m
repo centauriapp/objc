@@ -531,7 +531,7 @@ describe(@"sendToServerWithCompletion:", ^{
             [parameters[@"session_info"] shouldNotBeNil];
 
             NSDictionary *info = parameters[@"session_info"];
-            [info[@"_Library Version"] shouldNotBeNil];
+            [info[@"_SDK Version"] shouldNotBeNil];
             [info[@"_App Version"] shouldNotBeNil];
             [info[@"_OS Version"] shouldNotBeNil];
             [info[@"_OS"] shouldNotBeNil];

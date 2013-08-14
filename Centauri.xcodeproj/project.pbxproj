@@ -168,7 +168,6 @@
 		AA373B4D173B390500E1DDCC = {
 			isa = PBXGroup;
 			children = (
-				AA373BB1173B3E5000E1DDCC /* CFNetwork.framework */,
 				AA373B5B173B390500E1DDCC /* Centauri */,
 				AA373B70173B390600E1DDCC /* CentauriTests */,
 				AA373B58173B390500E1DDCC /* Frameworks */,
@@ -188,6 +187,7 @@
 		AA373B58173B390500E1DDCC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA373BB1173B3E5000E1DDCC /* CFNetwork.framework */,
 				AA373B59173B390500E1DDCC /* Foundation.framework */,
 				AA373B68173B390600E1DDCC /* SenTestingKit.framework */,
 				AA373B6A173B390600E1DDCC /* UIKit.framework */,
@@ -428,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"NSString * const CentauriLibraryVersion = @\\\"`git describe --tags --dirty`\\\";\" >\"$PROJECT_DIR/Centauri/CentauriVersion.m\"";
+			shellScript = "echo \"NSString * const CentauriSDKVersion = @\\\"`git describe --tags --dirty`\\\";\" >\"$PROJECT_DIR/Centauri/CentauriVersion.m\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

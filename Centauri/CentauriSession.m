@@ -18,7 +18,7 @@
 #import "CentauriTransmitter.h"
 #import "CentauriDevLog.h"
 
-extern NSString * const CentauriLibraryVersion;
+extern NSString * const CentauriSDKVersion;
 
 @implementation CentauriSession
 {
@@ -310,7 +310,7 @@ extern NSString * const CentauriLibraryVersion;
     info[@"_OS Version"] = [[UIDevice currentDevice] systemVersion];
     NSDictionary *infoPlist = [[NSBundle mainBundle] infoDictionary];
     info[@"_App Version"] = [infoPlist objectForKey:(NSString *)kCFBundleVersionKey];
-    info[@"_Library Version"] = CentauriLibraryVersion;
+    info[@"_SDK Version"] = CentauriSDKVersion;
 
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
