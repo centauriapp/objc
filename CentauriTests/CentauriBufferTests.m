@@ -143,21 +143,42 @@ describe(@"-freeze", ^{
         [buffer stub:@selector(outputStream) andReturn:output];
     });
 
-    context(@"with messages in the buffer", ^{
-        beforeEach(^{
-            buffer.bytesBuffered = 1;
-            [output open];
-            [buffer freeze];
+    context(@"when not frozen", ^{
+        context(@"with messages in the buffer", ^{
+            beforeEach(^{
+                buffer.bytesBuffered = 1;
+                [output open];
+                [buffer freeze];
+            });
+
+            it(@"adds the epilog", ^{
+                NSString *string = NSStringFromMemoryStream(output);
+                [[string should] equal:@"]}"];
+            });
         });
 
-        it(@"adds the epilog", ^{
-            NSString *string = NSStringFromMemoryStream(output);
-            [[string should] endWithString:@"]}"];
+        context(@"with no messages in the buffer", ^{
+            beforeEach(^{
+                [buffer freeze];
+            });
+
+            it(@"does not add the epilog", ^{
+                NSString *string = NSStringFromMemoryStream(output);
+                [[string should] equal:@""];
+            });
+        });
+
+        it(@"marks the buffer frozen", ^{
+            [buffer freeze];
+            [[theValue(buffer.frozen) should] beYes];
         });
     });
 
-    context(@"with no messages in the buffer", ^{
+    context(@"when already frozen", ^{
         beforeEach(^{
+            buffer.bytesBuffered = 1;
+            buffer.frozen = YES;
+            [output open];
             [buffer freeze];
         });
 
@@ -165,11 +186,6 @@ describe(@"-freeze", ^{
             NSString *string = NSStringFromMemoryStream(output);
             [[string should] equal:@""];
         });
-    });
-
-    it(@"marks the buffer frozen", ^{
-        [buffer freeze];
-        [[theValue(buffer.frozen) should] beYes];
     });
 });
 

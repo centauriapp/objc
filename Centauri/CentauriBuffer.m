@@ -98,7 +98,7 @@
 
 - (void) freeze
 {
-    if (self.bytesBuffered > 0)
+    if (self.bytesBuffered > 0 && !self.frozen)
     {
         NSOutputStream *stream = [self outputStream];
         [stream write:(uint8_t *)"]}" maxLength:2];
