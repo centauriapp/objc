@@ -118,12 +118,12 @@ describe(@"Centauri public API", ^{
     describe(@"useHTTPS property", ^{
         it(@"sets the transmitter base URL scheme to http:// when NO", ^{
             instance.useHTTPS = NO;
-            [[theValue([[CentauriTransmitter sharedTransmitter].baseURLString hasPrefix:@"http://"]) should] beYes];
+            [[[CentauriTransmitter sharedTransmitter].baseURLString should] startWithString:@"http://"];
         });
 
         it(@"sets the transmitter base URL scheme to https:// when YES", ^{
             instance.useHTTPS = YES;
-            [[theValue([[CentauriTransmitter sharedTransmitter].baseURLString hasPrefix:@"https://"]) should] beYes];
+            [[[CentauriTransmitter sharedTransmitter].baseURLString should] startWithString:@"https://"];
         });
     });
 

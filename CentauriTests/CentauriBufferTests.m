@@ -83,7 +83,7 @@ describe(@"-addMessage:", ^{
             [output open];
             [buffer addMessage:@{}];
             NSString *string = NSStringFromMemoryStream(output);
-            [[theValue([string hasPrefix:@"{\"log_lines\":["]) should] beYes];
+            [[string should] startWithString:@"{\"log_lines\":["];
         });
     });
 
@@ -98,7 +98,7 @@ describe(@"-addMessage:", ^{
         it(@"adds the message separator", ^{
             [buffer addMessage:@{}];
             NSString *string = NSStringFromMemoryStream(output);
-            [[theValue([string hasPrefix:@","]) should] beYes];
+            [[string should] startWithString:@","];
         });
     });
 
@@ -108,7 +108,7 @@ describe(@"-addMessage:", ^{
         [output open];
         [buffer addMessage:@{@"key": @"value"}];
         NSString *string = NSStringFromMemoryStream(output);
-        [[theValue([string hasSuffix:@"{\"key\":\"value\"}"]) should] beYes];
+        [[string should] endWithString:@"{\"key\":\"value\"}"];
     });
 
     it(@"increments bytesBuffered", ^{
@@ -152,7 +152,7 @@ describe(@"-freeze", ^{
 
         it(@"adds the epilog", ^{
             NSString *string = NSStringFromMemoryStream(output);
-            [[theValue([string hasSuffix:@"]}"]) should] beYes];
+            [[string should] endWithString:@"]}"];
         });
     });
 
