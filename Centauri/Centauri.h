@@ -105,7 +105,7 @@ extern "C" {
 
  When set to <code>YES</code>, all communication with the server use an encrypted connection. When set to <code>NO</code>, regular, unencrypted HTTP is used.
 
- If you are based in the United States, you should be aware that as of early 2013, using HTTPS and including the library in your App Store build may require you to register your app with the Bureau of Industry and Security; see <a href="http://www.bis.doc.gov/encryption/default.htm">http://www.bis.doc.gov/encryption/default.htm</a>. It is your responsibility to make this judgement for your app.
+ If you are based in the United States, you should be aware that as of early 2013, using HTTPS and including the library in your App Store build may require you to register your app with the Bureau of Industry and Security; see <a href="http://www.bis.doc.gov/index.php/policy-guidance/encryption">http://www.bis.doc.gov/index.php/policy-guidance/encryption</a>. It is your responsibility to make this judgement for your app.
 
  The default value for this property is <code>NO</code>.
  */
